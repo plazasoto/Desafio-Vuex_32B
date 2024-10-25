@@ -12,12 +12,12 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-for="juego in juegos">
                 <tr>
-                    <td>placeholder</td>
-                    <td>placeholder</td>
-                    <td>placeholder</td>
-                    <td>placeholder</td>
+                    <td>{{ juego.codigo }}</td>
+                    <td :style="{ borderColor: juego.color }">{{ juego.nombre }}</td>
+                    <td>{{ juego.stock }}</td>
+                    <td>{{ juego.precio }}</td>
                     <td>placeholder</td>
                 </tr>
             </tbody>
@@ -33,3 +33,16 @@
         border-radius: 2pt;
     }
 </style>
+
+<script>
+    import {mapState, mapActions} from 'vuex';
+    export default{
+        name:'Lista',
+        computed:{
+            ...mapState(['juegos'])
+        },
+        /* methods:{
+            ...mapActions(['fetchIndicadoresEconomicos'])
+        } */
+    }
+</script>

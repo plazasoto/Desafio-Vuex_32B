@@ -1,2 +1,18 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
+import juegos from '../assets/juegos.json';
+
+export default createStore({
+    state:{
+        juegos: juegos,
+    },
+    actions:{
+        stockUp(){
+            //
+        },
+        stockDown(){
+            //
+        }
+    },
+    mutations:{
+    }
+});
