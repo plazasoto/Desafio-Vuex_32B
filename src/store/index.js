@@ -6,13 +6,19 @@ export default createStore({
         juegos: juegos,
     },
     actions:{
-        stockUp(){
-            //
+        stockUp({commit}, index){
+            commit('stockMutation', {index, sumar: 1});
         },
-        stockDown(){
-            //
+        stockDown({commit}, index){
+            commit('stockMutation', {index, sumar: -1});
         }
     },
     mutations:{
+        stockMutation(state, {index, sumar}){
+            state.juegos[index].stock = parseInt(state.juegos[index].stock) + sumar;
+            if(state.juegos[index].stock < 0){//evitar stock negativo ᓀ‸ᓂ
+                state.juegos[index].stock = 0;
+            }
+        }
     }
 });

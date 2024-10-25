@@ -12,13 +12,16 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody v-for="juego in juegos">
+            <tbody v-for="(juego, index) in juegos">
                 <tr>
-                    <td>{{ juego.codigo }}</td>
+                    <td :style="{ borderColor: juego.color }">{{ juego.codigo }}</td>
                     <td :style="{ borderColor: juego.color }">{{ juego.nombre }}</td>
-                    <td>{{ juego.stock }}</td>
-                    <td>{{ juego.precio }}</td>
-                    <td>placeholder</td>
+                    <td :style="{ borderColor: juego.color }">{{ juego.stock }}</td>
+                    <td :style="{ borderColor: juego.color }">{{ juego.precio }}</td>
+                    <td :style="{ borderColor: juego.color }">
+                        <button @click="stockUp(index)"> + </button>
+                        <button @click="stockDown(index)"> - </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -41,8 +44,8 @@
         computed:{
             ...mapState(['juegos'])
         },
-        /* methods:{
-            ...mapActions(['fetchIndicadoresEconomicos'])
-        } */
+        methods:{
+            ...mapActions(['stockUp', 'stockDown'])
+        }
     }
 </script>
